@@ -18,7 +18,7 @@
     "check:launch": "node scripts/check-clean.mjs --launch"
   },
   "dependencies": {
-    "@asksable/site-connector": "0.8.3",
+    "@asksable/site-connector": "0.9.0",
     "@fontsource-variable/caveat": "^5.2.8",
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/manrope": "^5.2.8",
