@@ -527,7 +527,7 @@ export const LANDING_COPY = {
       },
       {
         quote:
-          "Back again to write another 5 star review... My mom's house needed some drains cleaned this time and of course we called great bunny after the wonderful service we had last time- They even gave us a returning customer discount because we mentioned the discount code thats on their website! What a way to make customers feel appreciated. Anyways, the sinks were draining slow and water was pooling. After Marco came by they're draining perfectly. Enough said. Great Bunny is a great business. Thank you Marco!",
+          "Back again to write another 5 star review... They even gave us a returning customer discount! The sinks were draining slow and water was pooling. After Marco came by they're draining perfectly. Great Bunny is a great business.",
         author: 'Lexie R.',
         city: 'La Cienega, NM',
         date: 'Aug 23, 2025',

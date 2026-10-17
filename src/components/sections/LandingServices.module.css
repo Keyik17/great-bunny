@@ -223,3 +223,11 @@
     aspect-ratio: 4 / 5;
   }
 }
+
+/* Motion: photos settle in slowly on hover. */
+.image { transition: transform 1.1s cubic-bezier(.22, 1, .36, 1); }
+.learnMore svg, .learnMore span { transition: transform .35s cubic-bezier(.22, 1, .36, 1); }
+@media (hover: hover) {
+  .row:hover .image { transform: scale(1.04); }
+  .row:hover .learnMore svg { transform: translateX(4px); }
+}

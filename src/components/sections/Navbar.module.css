@@ -625,3 +625,9 @@
     transform: none;
   }
 }
+
+.nav {
+  background: rgba(255, 255, 255, .86);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  backdrop-filter: saturate(1.4) blur(14px);
+}

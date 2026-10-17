@@ -166,3 +166,7 @@
     transition: none;
   }
 }
+
+.image { object-position: 50% 20%; }
+.iconWrap { transition: transform .4s cubic-bezier(.22, 1, .36, 1), background-color .3s; }
+@media (hover: hover) { .row:hover .iconWrap { transform: translateY(-2px) scale(1.06); } }

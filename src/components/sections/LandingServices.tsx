@@ -45,7 +45,7 @@ export function LandingServices() {
               </div>
               <div className={styles.copyPanel}>
                 <div className={styles.iconWrap}>
-                  <Icon size="var(--space-6)" weight="fill" aria-hidden="true" />
+                  <Icon size={24} weight="fill" aria-hidden="true" />
                 </div>
                 <h3 className={styles.serviceTitle}>{service.title}</h3>
                 <p className={styles.description}>{service.description}</p>
