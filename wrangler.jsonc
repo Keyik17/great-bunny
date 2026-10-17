@@ -1,0 +1,11 @@
+{
+  // Cloudflare Pages config (TanStack Start SSR via the Nitro
+  // `cloudflare-pages` preset). Build with `npm run build:cf`, which emits
+  // `dist/` (worker + static assets), then `npm run deploy`. Rename
+  // `name` to the customer's Pages project when spinning up a site.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "great-bunny",
+  "compatibility_date": "2026-06-05",
+  "compatibility_flags": ["nodejs_compat"],
+  "pages_build_output_dir": "dist"
+}

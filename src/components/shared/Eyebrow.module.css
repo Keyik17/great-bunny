@@ -1,0 +1,21 @@
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-emphasis);
+  color: var(--color-text);
+  letter-spacing: var(--tracking-eyebrow);
+  margin: 0 0 var(--space-4) 0;
+  line-height: 1.2;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+.sentence {
+  text-transform: none;
+}
+
+.title {
+  text-transform: capitalize;
+}

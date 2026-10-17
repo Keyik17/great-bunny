@@ -1,0 +1,20 @@
+.section {
+  padding-block: var(--section-padding-y);
+  position: relative;
+}
+
+.bg {
+  background: var(--color-bg);
+}
+
+.tint {
+  background: var(--color-surface-tint);
+}
+
+.white {
+  background: var(--color-surface);
+}
+
+.flush {
+  padding-block: 0;
+}

@@ -1,0 +1,53 @@
+{
+  "name": "great-bunny",
+  "version": "0.1.0",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build && tsc --noEmit && node scripts/add-credit-comment.mjs",
+    "build:cf": "NITRO_PRESET=cloudflare-pages npm run build",
+    "deploy": "npm run build:cf && wrangler pages deploy dist --project-name=great-bunny --branch=main --skip-caching",
+    "preview": "vite preview",
+    "start": "node .output/server/index.mjs",
+    "typecheck": "tsc --noEmit",
+    "init-client": "node scripts/init-client.mjs",
+    "kill:catalog": "node scripts/kill-catalog.mjs",
+    "check": "node scripts/check-clean.mjs",
+    "check:launch": "node scripts/check-clean.mjs --launch"
+  },
+  "dependencies": {
+    "@asksable/site-connector": "0.8.3",
+    "@fontsource-variable/caveat": "^5.2.8",
+    "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource-variable/manrope": "^5.2.8",
+    "@phosphor-icons/react": "^2.1.10",
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-navigation-menu": "^1.2.14",
+    "@tanstack/react-router": "^1.170.45",
+    "@tanstack/react-router-devtools": "^1.167.2",
+    "@tanstack/react-start": "^1.169.3",
+    "framer-motion": "^11.18.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "resend": "^6.12.4",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@mdx-js/rollup": "^3.1.1",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^22.5.4",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "csv-parse": "^6.2.1",
+    "nitro": "^3.0.260311-beta",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-mdx-frontmatter": "^5.2.0",
+    "sharp": "^0.34.5",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.14"
+  }
+}

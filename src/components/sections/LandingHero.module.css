@@ -1,0 +1,201 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-20);
+  background: var(--color-bg);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  color: var(--color-text-tertiary);
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-emphasis);
+  line-height: var(--leading-link);
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.eyebrowStar {
+  color: var(--color-star);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--text-hero);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.titleLine {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.script {
+  color: var(--color-accent);
+  font-family: var(--font-script);
+  font-size: var(--text-hero-script);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-heading);
+}
+
+.subhead {
+  max-width: var(--landing-area-panel-width);
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-loose);
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.primary {
+  min-height: var(--space-12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--text-button);
+  font-weight: var(--weight-button);
+  line-height: var(--leading-link);
+  letter-spacing: 0;
+  text-decoration: none;
+  padding: var(--space-3) var(--space-8);
+  transition:
+    background-color var(--duration-micro) var(--ease-out-quart),
+    color var(--duration-micro) var(--ease-out-quart);
+}
+
+.primary {
+  background: var(--color-brand);
+  color: var(--color-text-inverse);
+}
+
+.phoneLink {
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-link);
+  letter-spacing: 0;
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+  transition: color var(--duration-micro) var(--ease-out-quart);
+}
+
+.imageFrame {
+  width: 100%;
+  height: var(--landing-hero-image-height);
+  overflow: hidden;
+  background: var(--color-surface-tint);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.primary:focus-visible,
+.phoneLink:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-brand);
+  outline-offset: var(--space-1);
+}
+
+.primary:active {
+  background: var(--color-brand-pressed);
+}
+
+.phoneLink:active {
+  color: var(--color-text);
+}
+
+@media (hover: hover) {
+  .primary:hover {
+    background: var(--color-brand-hover);
+    color: var(--color-text-inverse);
+    text-decoration: none;
+  }
+
+  .phoneLink:hover {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .hero {
+    padding: var(--space-16) var(--space-8);
+  }
+
+  .imageFrame {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: var(--space-12) var(--space-4);
+  }
+
+  .titleLine {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .actions,
+  .primary {
+    width: 100%;
+  }
+
+  .actions {
+    /* Fat-thumb spacing: keep the phone link well clear of the button. */
+    gap: var(--space-5);
+    padding: var(--space-4) 0 var(--space-2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary,
+  .phoneLink {
+    transition: none;
+  }
+}

@@ -1,0 +1,34 @@
+node_modules
+yarn.lock
+
+.DS_Store
+.cache
+.env
+.env.*
+!.env.example
+
+# Customer PII output from CSV analysis, never commit.
+scripts/contacts-to-import.json
+.vercel
+.output
+.nitro
+/build/
+/dist/
+.wrangler/
+/api/
+/server/build
+/public/build# Sentry Config File
+.env.sentry-build-plugin
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+.tanstack
+.gstack/
+
+# react-email preview/export build output (npm run email)
+.react-email
+
+
+# Per-client init config (created from client.config.example.js)
+client.config.js

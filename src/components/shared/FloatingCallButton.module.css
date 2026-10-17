@@ -1,0 +1,119 @@
+/* ============================================================
+   FloatingCallButton, bottom-right pinned pill (desktop) or
+   circle (mobile). Hidden until user scrolls past the trigger.
+   ============================================================ */
+
+.wrap {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: var(--z-raised);
+  /* Shown only where the nav CTAs are collapsed into the hamburger; on
+     desktop the nav already carries phone + schedule and the floating pill
+     just covers content. */
+  display: none;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity var(--duration-state) var(--ease-out-expo),
+              transform var(--duration-state) var(--ease-out-expo);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 14px 22px;
+  background: var(--color-brand);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-weight: var(--weight-button);
+  font-size: 14px;
+  letter-spacing: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: var(--shadow-lg);
+  font-variant-numeric: tabular-nums;
+  transition: background-color var(--duration-micro) var(--ease-out-quart),
+              transform var(--duration-micro) var(--ease-out-quart),
+              box-shadow var(--duration-micro) var(--ease-out-quart);
+}
+@media (hover: hover) {
+  .button:hover {
+    background: var(--color-brand-hover);
+    color: var(--color-text-inverse);
+    text-decoration: none;
+    box-shadow: var(--shadow-xl);
+  }
+}
+.button:active {
+  background: var(--color-brand-pressed);
+  transform: scale(0.97);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+/* Inner content fades in fresh whenever the CTA swaps (call <-> quote). */
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  animation: ctaSwap var(--duration-state) var(--ease-out-expo);
+}
+@keyframes ctaSwap {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.label {
+  display: inline-block;
+}
+
+/* Visible only in the hamburger range. */
+@media (max-width: 1200px) {
+  .wrap {
+    display: block;
+  }
+}
+
+/* === Mobile: keep the full pill (number + quote text), just smaller ===== */
+@media (max-width: 600px) {
+  .wrap {
+    bottom: var(--space-4);
+    right: var(--space-4);
+  }
+  .button {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* === Reduced motion: instant ============================ */
+@media (prefers-reduced-motion: reduce) {
+  .wrap {
+    transition: opacity 0.01ms;
+    transform: none !important;
+  }
+  .content {
+    animation: none;
+  }
+}

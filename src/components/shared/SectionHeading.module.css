@@ -1,0 +1,50 @@
+.frame {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+  margin-inline: auto;
+}
+
+/* Eyebrow ships its own bottom margin; the frame gap owns spacing instead. */
+.eyebrow {
+  margin: 0;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--weight-heading-bold);
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-heading);
+  color: var(--color-text);
+  margin: 0;
+  /* ch resolves against the title's own (large) font, so this is a real
+     headline measure that scales per breakpoint, ~2 lines for this copy. */
+  max-width: 28ch;
+  /* Title Case every word, matching the hero H1. */
+  text-transform: capitalize;
+  text-wrap: balance;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 48ch;
+  text-wrap: pretty;
+}
+
+/* Section headlines hold 36px on phone (the global --text-h2 drops to 30px
+   at this breakpoint, which reads too small for a section headline). */
+@media (max-width: 600px) {
+  .title {
+    font-size: 36px;
+  }
+}

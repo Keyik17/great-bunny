@@ -1,0 +1,139 @@
+/* ============================================================
+   LangDropdown, shared language switcher.
+   Two tones: 'on-surface' (light bg, used in navbar)
+              'on-dark'    (dark bg, used in footer)
+   The popup itself stays white in both cases.
+   ============================================================ */
+
+.wrapper {
+  position: relative;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 37px;
+  padding: 0 12px;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: var(--weight-emphasis);
+  letter-spacing: 0;
+  line-height: 1;
+  transition: background-color var(--duration-micro) var(--ease-out-quart);
+}
+
+.toneOnSurface {
+  color: var(--color-text);
+}
+.toneOnSurface:hover {
+  background: var(--color-surface-tint);
+}
+.toneOnSurface .globe {
+  opacity: 0.6;
+}
+.toneOnSurface .chevron {
+  opacity: 0.55;
+}
+
+.toneOnDark {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+.toneOnDark:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+.toneOnDark .globe {
+  opacity: 0.85;
+}
+.toneOnDark .chevron {
+  opacity: 0.85;
+}
+
+.globe {
+  flex-shrink: 0;
+}
+
+.label {
+  line-height: 1;
+}
+
+.chevron {
+  transition: transform var(--duration-state) var(--ease-out-quart);
+}
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 4px;
+  min-width: 150px;
+  z-index: var(--z-dropdown);
+  animation: dropdownIn 150ms var(--ease-out-expo);
+}
+
+.dropdownAlignEnd {
+  right: 0;
+}
+.dropdownAlignStart {
+  left: 0;
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: var(--weight-emphasis);
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--color-text);
+  text-decoration: none;
+  text-align: left;
+  transition: background-color var(--duration-micro) var(--ease-out-quart),
+              color var(--duration-micro) var(--ease-out-quart);
+}
+.item:hover {
+  background: var(--color-surface-tint);
+  text-decoration: none;
+}
+.itemActive {
+  color: var(--color-brand-strong);
+}
+
+.check {
+  flex-shrink: 0;
+  opacity: 0;
+  color: var(--color-brand-strong);
+}
+.itemActive .check {
+  opacity: 1;
+}

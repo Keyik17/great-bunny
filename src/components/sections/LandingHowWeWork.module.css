@@ -1,0 +1,127 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-20);
+  background: var(--color-bg);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--text-section-title);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.subhead {
+  max-width: var(--landing-cta-image-width);
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-h6);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-8);
+  width: 100%;
+}
+
+.steps::before {
+  content: "";
+  position: absolute;
+  top: var(--space-5);
+  left: calc(100% / 6);
+  right: calc(100% / 6);
+  height: var(--border-width-hairline);
+  background: var(--color-border);
+  z-index: var(--z-base);
+}
+
+.stepGroup {
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.number {
+  position: relative;
+  z-index: var(--z-raised);
+  margin: 0;
+  padding: 0 var(--space-1);
+  background: var(--color-bg);
+  color: var(--color-accent);
+  font-family: var(--font-script);
+  font-size: var(--text-script-lg);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-heading);
+  letter-spacing: 0;
+}
+
+.stepTitle {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--text-step-title);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: 0;
+}
+
+.description {
+  max-width: var(--landing-step-copy-width);
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-loose);
+  letter-spacing: 0;
+}
+
+@media (max-width: 960px) {
+  .section {
+    padding: var(--space-16) var(--space-8);
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .steps::before {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: var(--space-12) var(--space-4);
+  }
+}

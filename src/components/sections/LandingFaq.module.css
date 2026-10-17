@@ -1,0 +1,95 @@
+.section {
+  display: grid;
+  grid-template-columns: var(--landing-faq-left-width) minmax(0, 1fr);
+  gap: var(--space-20);
+  padding: var(--space-20);
+  background: var(--color-bg);
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.title {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--text-section-title);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: 0;
+}
+
+.subhead {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-button);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-relaxed);
+  letter-spacing: 0;
+}
+
+.cta {
+  min-height: var(--space-12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  align-self: flex-start;
+  border-radius: var(--radius-button);
+  background: var(--color-brand);
+  color: var(--color-text-inverse);
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-button);
+  line-height: var(--leading-link);
+  letter-spacing: 0;
+  text-decoration: none;
+  padding: var(--space-3) var(--space-8);
+  transition: background-color var(--duration-micro) var(--ease-out-quart);
+}
+
+.cta:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-brand);
+  outline-offset: var(--space-1);
+}
+
+.cta:active {
+  background: var(--color-brand-pressed);
+}
+
+@media (hover: hover) {
+  .cta:hover {
+    background: var(--color-brand-hover);
+    color: var(--color-text-inverse);
+    text-decoration: none;
+  }
+
+}
+
+@media (max-width: 960px) {
+  .section {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    padding: var(--space-16) var(--space-8);
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: var(--space-12) var(--space-4);
+  }
+
+  .cta {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta {
+    transition: none;
+  }
+}

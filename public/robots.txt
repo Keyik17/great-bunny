@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://great-bunny.pages.dev/sitemap.xml

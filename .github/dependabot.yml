@@ -1,0 +1,18 @@
+# Auto-update @asksable/site-connector. Dependabot opens a PR whenever a new
+# version publishes to npm. Scoped to just the connector (via `allow`) to keep
+# the noise down, with no version cap so it tracks the latest, including future
+# major/V2 lines. Merge the PR to adopt; the shell's SableSiteProvider wiring
+# lives in src/routes/__root.tsx if an update ever needs integration changes.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-name: "@asksable/site-connector"
+    commit-message:
+      prefix: "deps"
+    labels:
+      - "dependencies"
+      - "site-connector"

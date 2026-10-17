@@ -1,0 +1,38 @@
+# Great Bunny
+
+Great Bunny LLC provides professional drain cleaning and sewer drain service for Denver metro homes and businesses. Founded by Marco Reyes in October 2023, the family-owned company serves Denver, Lakewood, Arvada, and Boulder with a 5.0 Yelp rating from 4 reviews.
+
+## Pages
+
+- [Home](https://great-bunny.pages.dev/): Overview of services, service area, and proof points
+- [Services](https://great-bunny.pages.dev/services): Full list of drain cleaning services
+- [Emergency Drain Cleaning](https://great-bunny.pages.dev/services/emergency-drain-cleaning): Urgent clogged drains, backups, and after-hours drain issues
+- [Sewer Drain Cleaning](https://great-bunny.pages.dev/services/sewer-drain-cleaning): Sewer line blockages, main line cleaning, and recurring backups
+- [Residential Drain Cleaning](https://great-bunny.pages.dev/services/residential-drain-cleaning): Kitchen, bathroom, shower, laundry, and floor drains
+- [Commercial Drain Cleaning](https://great-bunny.pages.dev/services/commercial-drain-cleaning): Drain cleaning for restaurants, offices, retail, and commercial properties
+- [Locations](https://great-bunny.pages.dev/locations): Every city served
+- [Denver](https://great-bunny.pages.dev/locations/denver): Drain cleaning in Denver, CO
+- [Lakewood](https://great-bunny.pages.dev/locations/lakewood): Drain cleaning in Lakewood, CO
+- [Arvada](https://great-bunny.pages.dev/locations/arvada): Drain cleaning in Arvada, CO
+- [Boulder](https://great-bunny.pages.dev/locations/boulder): Drain cleaning in Boulder, CO
+- [About](https://great-bunny.pages.dev/about): Marco Reyes, company story, values, and community identity
+- [FAQ](https://great-bunny.pages.dev/faq): Common questions about services, pricing, areas, emergencies, and discounts
+- [Free quote](https://great-bunny.pages.dev/free-quote): Request a drain cleaning quote
+- [Contact](https://great-bunny.pages.dev/contact): Phone, email, service area, hours, and contact form
+- [Blog](https://great-bunny.pages.dev/blog): Company news and updates
+- [Young Americans Awards Post](https://great-bunny.pages.dev/celebrating-youth-biz-success-at-young-americans-awards/): Youth Biz Awards recognition for Great Bunny LLC
+- [Privacy Policy](https://great-bunny.pages.dev/legal/privacy-policy): Privacy practices
+- [Terms & Conditions](https://great-bunny.pages.dev/legal/terms-conditions): Service terms
+- [Sitemap](https://great-bunny.pages.dev/sitemap): Full site index
+
+## Contact
+
+- Phone: (720) 555-0186
+- Email: hello@greatbunny.example
+- Service area: Denver, Lakewood, Arvada, Boulder, CO
+
+## Recognition
+
+- 5.0 Yelp rating from 4 reviews
+- BBB A rating
+- Young Americans Fully Charged finalist

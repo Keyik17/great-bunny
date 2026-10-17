@@ -1,0 +1,269 @@
+/* ============================================================
+   DESIGN TOKENS, source of truth for color, typography,
+   spacing, motion, and layout. Every component MUST reference
+   var(--token-name) from this file.
+
+   GREAT BUNNY: the brand is DELIBERATELY monochrome (black
+   #0A0A0A on white) per the client's Pencil design system. The
+   near-grayscale values below are the client's real palette,
+   not leftover shell defaults. Accent moments come from the
+   Caveat script font and photography, not from color.
+   Keep --color-destructive / -success / -warning functional.
+   The gold review-star color lives in the testimonial modules.
+   ============================================================ */
+
+:root {
+  /* === Surfaces ============================================
+     Light-first palette, cool off-white temperature.
+     The user picked "just light mode", no dark surfaces anywhere on the site.
+     ======================================================== */
+  --color-bg:               #FFFFFF;  /* primary canvas (white) */
+  --color-surface:          #FFFFFF;  /* slight elevation, cards */
+  --color-surface-raised:   #FFFFFF;  /* same as surface; differentiation via --shadow-md */
+  --color-surface-tint:     #F5F5F5;  /* design $surface-secondary, tinted band for section alternation */
+  --color-surface-dark:     #0A0A0A;  /* design $surface-dark, footer, CTA bands, dark heroes */
+  --color-text-on-dark:     #FFFFFF;  /* primary text on dark bands */
+  --color-text-on-dark-secondary: #999999;  /* design $text-secondary, muted text on dark bands */
+
+  /* === Text ================================================
+     Deep navy with cool undertone, sits on cool off-white.
+     Tested at 17:1 (primary), 6.7:1 (secondary), 4.8:1 (tertiary).
+     ======================================================== */
+  --color-text:             #0A0A0A;  /* design $text-primary */
+  --color-text-secondary:   #404040;  /* design $foreground-secondary, 10.4:1 */
+  --color-text-tertiary:    #666666;  /* design $text-muted, 5.7:1 */
+  --color-text-inverse:     #FFFFFF;  /* text on filled brand buttons */
+  --color-heading-deep:     #0A0A0A;  /* headings match primary text, monochrome brand */
+
+  /* === Brand ===============================================
+     Monochrome brand: black is the accent. Every slot passes
+     AA trivially (20.4:1 on white).
+     ======================================================== */
+  --color-brand:            #0A0A0A;  /* design $accent-primary, Great Bunny is deliberately monochrome */
+  --color-brand-strong:     #0A0A0A;  /* 20.4:1 on white, AA+ everywhere */
+  --color-brand-hover:      #1A1A1A;  /* design $accent-hover, 17.4:1 */
+  --color-brand-pressed:    #000000;  /* pressed state */
+  --color-brand-soft:       rgba(10, 10, 10, 0.06);
+  --color-brand-soft-strong:rgba(10, 10, 10, 0.12);  /* tighter tint for borders */
+  --color-brand-light:      #404040;  /* light end of the (disabled) display gradient */
+
+  /* Heritage green from the client's old site, the 10% accent layer.
+     Script accent words, icons, inline links, focus rings. Never large
+     fills, never the black CTAs. */
+  --color-accent:           #35522C;  /* 8.8:1 on white, AA+ for text and icons */
+  --color-accent-strong:    #2A4123;  /* hover/pressed, darker */
+  --color-accent-soft:      rgba(53, 82, 44, 0.08);  /* tint backgrounds */
+  --color-accent-on-dark:   #9DBE8D;  /* sage for dark bands, 10.2:1 on #0A0A0A */
+
+  /* Brand display gradient, ported from the legacy headline.
+     Light end ramps across most of the glyph height (bottom = light, top = brand)
+     so it reads clearly as a gradient on the headline accent and the stat numbers.
+     Decorative ONLY, large display headings + stats, never body or UI text
+     (the brand hues don't meet AA at small sizes). */
+  --gradient-brand-text:    linear-gradient(0deg, var(--color-brand-light) 0%, var(--color-brand) 58%);
+
+  /* === Lines ===============================================
+     Borders derived from text color at low alpha so they tint with the surface.
+     ======================================================== */
+  --color-border:           #E5E5E5;  /* design $border-subtle */
+  --color-border-subtle:    #F0F0F0;
+  --color-border-strong:    #CCCCCC;
+
+  /* === Status ============================================== */
+  --color-destructive:      #B3261E;  /* 6.2:1 on bg, passes AA */
+  --color-success:          #1A7F37;  /* 4.7:1 on bg, passes AA */
+  --color-warning:          #9A5B00;  /* 4.6:1 on bg, passes AA */
+  --color-disabled:         #CBCBCB;  /* disabled control fill */
+  --color-star:             #F5A623;  /* review-star gold */
+  --color-footer-watermark:  #151515;
+  --color-footer-rule:       #222222;
+  --color-dark-border:       #444444;
+  --color-map-label-bg:      #FFFFFF;
+
+  /* === Typography ==========================================
+     Display: Inter Display (headlines, UI emphasis)
+     Body:    Geist (paragraphs, default UI)
+     Mono:    JetBrains Mono (rare, code, technical meta)
+     ======================================================== */
+  /* Great Bunny pairing from the Pencil design:
+     Manrope (design $font-heading) for headings, Inter for body,
+     Caveat (design $font-script) for the handwritten accent words in headlines. */
+  --font-heading: 'Manrope Variable', 'Manrope', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:    'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-script:  'Caveat Variable', 'Caveat', cursive;
+  --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Type scale, STATIC px (user picked static + breakpoint step-downs).
+     Tablet (<=960px) and phone (<=600px) media queries below step these down. */
+  --text-h1:       64px;
+  --text-h2:       44px;
+  --text-h3:       32px;
+  --text-h4:       26px;
+  --text-h5:       19px;
+  --text-h6:       16px;
+  --text-body-lg:  17px;
+  --text-body-sm:  14px;
+  --text-link:     14px;
+  --text-eyebrow:  14px;
+  --text-button:   15px;
+  --text-hero:     56px;
+  --text-hero-script: 62px;
+  --text-section-title: 40px;
+  --text-service-title: 28px;
+  --text-step-title: 20px;
+  --text-footer-logo: 22px;
+  --text-footer-watermark: 152px;
+  --text-cta-title: 36px;
+  --text-script-lg: 32px;
+  --text-script-md: 28px;
+  --text-label: 14px;
+  --text-caption: 12px;
+
+  --leading-heading: 1.1;
+  --leading-body:    1.5;
+  --leading-link:    1.2;
+  --leading-loose:   1.6;
+  --leading-relaxed: 1.7;
+
+  --tracking-heading: -0.03em;
+  --tracking-body:    -0.01em;
+  --tracking-eyebrow: 0;        /* Caps eyebrows live at 0, never positive */
+  --tracking-button:  -0.01em;  /* Buttons live at 0 to -0.01em, never positive */
+
+  --weight-heading:        400;
+  --weight-heading-strong: 500;  /* h4/h5/h6, sub-heads */
+  --weight-heading-bold:   600;  /* hero display headings */
+  --weight-body:           400;
+  --weight-emphasis:       500;
+  --weight-button:         600;
+  --weight-bold:           700;
+  --weight-extra-bold:     800;
+  --weight-black:          900;
+
+  /* === Spacing scale ======================================= */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* === Layout dimensions ===================================
+     These stay fluid via clamp(), scaling whitespace smoothly is safe.
+     Type scale stays static (above) per user preference.
+     ======================================================== */
+  --section-padding-y: clamp(48px, 7vw, 112px);
+  --container-width:   1200px;
+  --container-padding: clamp(16px, 3vw, 40px);
+  --nav-height:        clamp(68px, 6.5vw, 88px);
+  --nav-height-design: 72px;
+  --landing-hero-image-height: 500px;
+  --landing-service-row-height: 400px;
+  --landing-testimonial-height: 260px;
+  --landing-why-height: 820px;
+  --landing-why-image-width: 620px;
+  --landing-area-height: 640px;
+  --landing-area-panel-width: 560px;
+  --landing-step-copy-width: 260px;
+  --landing-faq-left-width: 400px;
+  --landing-cta-height: 400px;
+  --landing-cta-image-width: 520px;
+  --footer-brand-column-min: 260px;
+  --footer-brand-column-max: 320px;
+  --footer-watermark-letter-spacing: 10px;
+  --border-width-hairline: 1px;
+  --focus-ring-width: 2px;
+
+  /* === Radius ============================================== */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   12px;  /* design $radius-md */
+  --radius-lg:   12px;
+  --radius-xl:   20px;
+  --radius-2xl:  26px;
+  --radius-full: 9999px;
+  --radius-button: var(--radius-full);  /* every text button/CTA is a pill (client call) */
+
+  /* === Shadows =============================================
+     Cool tint on the shadow color so it harmonizes with the cool palette.
+     ======================================================== */
+  --shadow-sm: 0 1px 2px rgba(10, 10, 10, 0.04),
+               0 4px 12px rgba(10, 10, 10, 0.03);
+  --shadow-md: 0 4px 16px rgba(10, 10, 10, 0.06),
+               0 2px 6px rgba(10, 10, 10, 0.04);
+  --shadow-lg: 0 12px 32px rgba(10, 10, 10, 0.10),
+               0 4px 12px rgba(10, 10, 10, 0.06);
+  --shadow-xl: 0 24px 60px rgba(10, 10, 10, 0.12),
+               0 8px 20px rgba(10, 10, 10, 0.08);
+
+  /* === Easing ==============================================
+     Only these four. No bounce, no elastic.
+     ======================================================== */
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);   /* entrances, scroll reveals */
+  --ease-in-expo:   cubic-bezier(0.7, 0, 0.84, 0);    /* exits, dismissals */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);   /* subtle hover/state */
+  --ease-drawer:    cubic-bezier(0.32, 0.72, 0, 1);  /* iOS-style drawer */
+
+  /* === Duration ============================================ */
+  --duration-micro:    150ms;
+  --duration-state:    250ms;
+  --duration-layout:   350ms;
+  --duration-page:     300ms;
+  --duration-reveal:   700ms;
+
+  /* === Z-index ============================================= */
+  --z-base:     1;
+  --z-raised:   10;
+  --z-sticky:   30;
+  --z-nav:      50;
+  --z-dropdown: 100;
+  --z-modal:    9999;
+
+  /* === Skeleton ============================================
+     Used by <Skeleton> shared component.
+     ======================================================== */
+  --skeleton-base:      #ECECEC;
+  --skeleton-highlight: #F4F4F4;
+}
+
+/* ============================================================
+   Responsive step-downs, static px scale,
+   typography stepped down at two breakpoints.
+   ============================================================ */
+@media (max-width: 960px) {
+  :root {
+    --text-h1:      48px;
+    --text-h2:      36px;
+    --text-h3:      28px;
+    --text-h4:      22px;
+    --text-h5:      18px;
+    --text-body-lg: 16px;
+    --text-hero:    48px;
+    --text-hero-script: 54px;
+    --text-section-title: 36px;
+    --text-footer-watermark: 104px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --text-h1:      36px;
+    --text-h2:      30px;
+    --text-h3:      24px;
+    --text-h4:      20px;
+    --text-h5:      17px;
+    --text-body-lg: 16px;
+    --text-hero:    36px;
+    --text-hero-script: 42px;
+    --text-section-title: 30px;
+    --text-service-title: 24px;
+    --text-footer-watermark: 56px;
+  }
+}

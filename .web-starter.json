@@ -1,0 +1,70 @@
+{
+  "creditAuthor": "Protocol",
+  "creditUrl": "protocolsite.com",
+  "framework": "tanstack-start",
+  "outputDir": "dist",
+  "deployTarget": "cloudflare-pages",
+  "animationLibrary": "framer-motion",
+  "locales": ["en"],
+  "projectType": "marketing",
+  "fonts": {
+    "display": "Inter Tight Variable",
+    "body": "Inter Variable",
+    "notes": "Matches src/styles/tokens.css: --font-heading is Inter Tight, --font-body is Inter. Both ship via @fontsource-variable, no Google Fonts network call. A client can override the stack in tokens.css."
+  },
+  "palette": {
+    "mode": "light-first",
+    "temperature": "neutral",
+    "accent": "#35522C",
+    "notes": "Monochrome base (black #0A0A0A brand, white/gray surfaces) with heritage green #35522C as the 10% accent layer: script accent words, icons, inline links, focus rings. Sage #9DBE8D on dark bands. All combos AA+ (green 8.8:1 on white)."
+  },
+  "typeScale": "static",
+  "tone": "editorial",
+  "headlessLibrary": "radix",
+  "emailCapture": {
+    "kind": "newsletter",
+    "placements": [
+      "footer",
+      "modal"
+    ],
+    "provider": "resend",
+    "doubleOptIn": false,
+    "doubleOptInNotes": "Initial wiring uses Resend's Contacts API which is single opt-in. Switch to true once a custom confirmation-email flow is built (token-based magic link).",
+    "cadence": "monthly"
+  },
+  "legal": {
+    "kind": "privacy-terms",
+    "jurisdictions": [
+      "US",
+      "US-Colorado"
+    ],
+    "businessEntity": "LLC",
+    "businessName": "Great Bunny LLC",
+    "businessAddress": "1588 S Robb Ct, Lakewood, CO (verify against GMB before launch)",
+    "businessAddressNotes": "PLACEHOLDER: service-area business with no public street address is common; record the customer's base city + zip and the counties served.",
+    "contactEmail": "hello@greatbunny.example",
+    "contactEmailNotes": "PLACEHOLDER: use a domain alias once the customer's domain is set up.",
+    "contactPhone": "(720) 555-0186",
+    "dataCollected": [
+      "analytics",
+      "email-capture"
+    ],
+    "needsCookieBanner": false,
+    "published": false,
+    "lastUpdated": null,
+    "cookieConsentNotes": "Default is no analytics at all (cookieless-ready), so no consent banner / cookie policy ship. The cookie-policy page + GA4/GTM Consent Mode + banner are gated behind ENABLE_COOKIE_CONSENT in src/components/shared/CookieBanner.tsx. Flip it to true (and set the client's own GA/GTM ids in __root.tsx) only for a client that uses cookie-based analytics/ads; then legal.kind becomes full again.",
+    "publishedNotes": "PLACEHOLDER: legal pages ship as boilerplate. Have the customer review (ideally counsel-review), then flip published to true and set lastUpdated."
+  },
+  "assets": {
+    "favicon": "done",
+    "appleTouchIcon": "done",
+    "maskableIcon": "missing",
+    "ogDefault": "done",
+    "ogDefaultSquare": "missing",
+    "logoSvg": "placeholder",
+    "logoMark": "done",
+    "manifest": "placeholder",
+    "_notes": "PLACEHOLDER: generate the customer's real brand assets (favicon, maskable icon, OG default + square, SVG logo + mark) from a 1024x1024 master via scripts/gen-icons.mjs, then update these statuses."
+  },
+  "remindersFiredThisSession": []
+}

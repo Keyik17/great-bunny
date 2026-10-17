@@ -1,0 +1,329 @@
+.section {
+  background: var(--color-bg);
+}
+
+.carousel {
+  display: grid;
+  grid-template-columns: var(--landing-area-panel-width) minmax(0, 1fr);
+  min-height: var(--landing-area-height);
+  overflow: hidden;
+}
+
+.infoPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-6);
+  padding: var(--space-12) var(--space-20);
+  background: var(--color-bg);
+}
+
+.pinWrap {
+  width: var(--space-14);
+  height: var(--space-14);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-width-hairline) solid var(--color-brand);
+  border-radius: var(--radius-full);
+  background: var(--color-brand);
+  color: var(--color-text-inverse);
+}
+
+.city {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--text-section-title);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: 0;
+}
+
+.description {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-button);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-relaxed);
+  letter-spacing: 0;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  border-top: var(--border-width-hairline) solid var(--color-border);
+  padding: var(--space-3) 0;
+  color: var(--color-text-tertiary);
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: var(--weight-emphasis);
+  line-height: var(--leading-link);
+  letter-spacing: 0;
+}
+
+.stat strong {
+  color: var(--color-text);
+  font-weight: var(--weight-button);
+}
+
+.outlineCta {
+  min-height: var(--space-12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  border: var(--border-width-hairline) solid var(--color-text);
+  border-radius: var(--radius-button);
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-family: var(--font-body);
+  font-size: var(--text-button);
+  font-weight: var(--weight-button);
+  line-height: var(--leading-link);
+  letter-spacing: 0;
+  text-decoration: none;
+  padding: var(--space-3) var(--space-8);
+  transition:
+    background-color var(--duration-micro) var(--ease-out-quart),
+    color var(--duration-micro) var(--ease-out-quart);
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.dot {
+  width: var(--space-3);
+  height: var(--space-3);
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--color-border);
+  padding: 0;
+  cursor: pointer;
+  transition:
+    width var(--duration-micro) var(--ease-out-quart),
+    background-color var(--duration-micro) var(--ease-out-quart);
+}
+
+.dotActive {
+  width: var(--space-6);
+  background: var(--color-brand);
+}
+
+.mapPanel {
+  position: relative;
+  overflow: hidden;
+  min-height: var(--landing-area-height);
+  background: var(--color-surface-tint);
+  touch-action: pan-y;
+}
+
+.track {
+  display: flex;
+  height: 100%;
+  transition: transform var(--duration-layout) var(--ease-out-expo);
+}
+
+.slide {
+  position: relative;
+  flex: 0 0 100%;
+  min-width: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.label {
+  position: absolute;
+  top: var(--space-12);
+  left: var(--space-12);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-xl);
+  background: var(--color-map-label-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: var(--weight-button);
+  line-height: var(--leading-link);
+  letter-spacing: 0;
+  padding: var(--space-2) var(--space-4);
+}
+
+.arrowGroup {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transform: translateY(-50%);
+}
+
+.arrowButton {
+  width: var(--space-12);
+  height: var(--space-12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--color-map-label-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background-color var(--duration-micro) var(--ease-out-quart),
+    color var(--duration-micro) var(--ease-out-quart);
+}
+
+.outlineCta:focus-visible,
+.dot:focus-visible,
+.arrowButton:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-brand);
+  outline-offset: var(--space-1);
+}
+
+.outlineCta:active,
+.arrowButton:active {
+  background: var(--color-surface-tint);
+}
+
+@media (hover: hover) {
+  .outlineCta:hover {
+    background: var(--color-brand);
+    color: var(--color-text-inverse);
+    text-decoration: none;
+  }
+
+  .arrowButton:hover {
+    background: var(--color-brand);
+    color: var(--color-text-inverse);
+  }
+}
+
+.mobileGrid {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .carousel {
+    display: none;
+  }
+
+  .mobileGrid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    padding: var(--space-16) var(--space-8);
+  }
+
+  .mobileTitle {
+    margin: 0;
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: var(--text-section-title);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-heading);
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  .gridCards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .gridCard {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-decoration: none;
+    background: var(--color-surface-tint);
+  }
+
+  .gridCard:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-brand);
+    outline-offset: var(--space-1);
+  }
+
+  .gridImage {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .gridOverlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-10) var(--space-4) var(--space-4);
+    /* Scrim over the photo; no token exists for gradient stops. */
+    background: linear-gradient(
+      180deg,
+      rgba(10, 10, 10, 0) 0%,
+      rgba(10, 10, 10, 0.55) 35%,
+      rgba(10, 10, 10, 0.88) 100%
+    );
+  }
+
+  .gridCity {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    color: var(--color-text-on-dark);
+    font-family: var(--font-heading);
+    font-size: var(--text-h6);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-link);
+    letter-spacing: 0;
+  }
+
+  .gridMeta {
+    color: var(--color-text-on-dark);
+    font-family: var(--font-body);
+    font-size: var(--text-caption);
+    font-weight: var(--weight-body);
+    line-height: var(--leading-link);
+    letter-spacing: 0;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (max-width: 600px) {
+  .mobileGrid {
+    padding: var(--space-12) var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .outlineCta,
+  .dot,
+  .arrowButton,
+  .track {
+    transition: none;
+  }
+}

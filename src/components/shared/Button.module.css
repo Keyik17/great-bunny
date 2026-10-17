@@ -1,0 +1,118 @@
+/* ============================================================
+   Button, primary, secondary, ghost. Polymorphic <button|a|Link>.
+   - Border on .secondary lives OUTSIDE the box (box-shadow) so primary
+     and secondary buttons share identical content dimensions.
+   - Letter-spacing held at -0.01em max (no positive tracking, per skill).
+   ============================================================ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 14px 26px;
+  border: 0;
+  border-radius: var(--radius-button);
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-body);
+  font-weight: var(--weight-button);
+  letter-spacing: var(--tracking-button);
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-micro) var(--ease-out-quart),
+    color var(--duration-micro) var(--ease-out-quart),
+    box-shadow var(--duration-micro) var(--ease-out-quart),
+    transform var(--duration-micro) var(--ease-out-quart);
+  will-change: transform;
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+/* === Sizes ============================================== */
+.size_sm {
+  padding: 10px 18px;
+  font-size: 14px;
+}
+.size_md {
+  padding: 14px 26px;
+  font-size: var(--text-button);
+}
+.size_lg {
+  padding: 18px 32px;
+  font-size: 16px;
+}
+
+/* === Primary (solid brand) ============================== */
+.primary {
+  background: var(--color-brand-strong);
+  color: var(--color-text-inverse);
+}
+.primary:hover {
+  background: var(--color-brand-hover);
+  color: var(--color-text-inverse);
+  text-decoration: none;
+}
+.primary:active {
+  background: var(--color-brand-pressed);
+}
+
+/* === Secondary (outlined brand, outside-the-box border) == */
+.secondary {
+  background: var(--color-surface);
+  color: var(--color-brand-strong);
+  box-shadow: 0 0 0 1px var(--color-brand-strong);
+}
+.secondary:hover {
+  background: var(--color-brand-strong);
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  box-shadow: 0 0 0 1px var(--color-brand-strong);
+}
+
+/* === Ghost (icon button, nav link variant) ============== */
+.ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+  padding-inline: 12px;
+}
+.ghost:hover {
+  color: var(--color-text);
+  background: var(--color-surface-tint);
+  text-decoration: none;
+}
+
+/* === Disabled state ===================================== */
+.button:disabled,
+.button[aria-disabled='true'] {
+  background: var(--color-disabled);
+  color: var(--color-text-inverse);
+  box-shadow: none;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.button:disabled:hover,
+.button[aria-disabled='true']:hover {
+  background: var(--color-disabled);
+  color: var(--color-text-inverse);
+  transform: none;
+}
+
+/* === Loading state (spinner pending) ==================== */
+.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* === Mobile full-width =================================== */
+@media (max-width: 600px) {
+  .button {
+    width: 100%;
+    justify-content: center;
+  }
+}

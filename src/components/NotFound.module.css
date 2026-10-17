@@ -1,0 +1,109 @@
+.main {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100svh - var(--nav-height));
+  padding: var(--section-padding-y) var(--container-padding);
+  background: var(--color-bg);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-6);
+  max-width: 560px;
+}
+
+.code {
+  font-family: var(--font-script);
+  font-size: 160px;
+  font-weight: var(--weight-body);
+  line-height: 0.9;
+  letter-spacing: 0;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.body {
+  font-size: var(--text-body-lg);
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 38ch;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--space-12);
+  padding: var(--space-3) var(--space-8);
+  background: var(--color-brand);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-button);
+  font-family: var(--font-body);
+  font-size: var(--text-button);
+  font-weight: var(--weight-button);
+  letter-spacing: var(--tracking-button);
+  text-decoration: none;
+  transition: background-color var(--duration-micro) var(--ease-out-quart),
+              transform var(--duration-micro) var(--ease-out-quart);
+}
+.primary:active {
+  background: var(--color-brand-pressed);
+  transform: scale(0.97);
+}
+
+@media (hover: hover) {
+  .primary:hover {
+    background: var(--color-brand-hover);
+    color: var(--color-text-inverse);
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .code {
+    font-size: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+  .code {
+    font-size: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary {
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  .primary {
+    width: 100%;
+  }
+}

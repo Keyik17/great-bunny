@@ -1,0 +1,106 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  border-top: 1px solid var(--color-border);
+}
+.item:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header {
+  margin: 0;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  width: 100%;
+  padding: var(--space-6) 0;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  transition: color var(--duration-micro) var(--ease-out-quart);
+}
+.trigger:hover {
+  color: var(--color-brand-strong);
+}
+
+.question {
+  font-size: 19px;
+  font-weight: var(--weight-emphasis);
+  line-height: var(--leading-heading);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+@media (max-width: 600px) {
+  .question {
+    font-size: 17px;
+  }
+  .trigger {
+    padding: var(--space-5) 0;
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-text-tertiary);
+  transition:
+    transform var(--duration-state) var(--ease-out-quart),
+    color var(--duration-micro) var(--ease-out-quart);
+}
+.trigger[data-state='open'] .icon {
+  transform: rotate(45deg);
+  color: var(--color-brand-strong);
+}
+.trigger:hover .icon {
+  color: var(--color-brand-strong);
+}
+
+.content {
+  overflow: hidden;
+}
+/* Both directions use a decelerating ease-out so the panel starts moving
+   immediately and settles smoothly. (The old close used ease-in-expo, which
+   held near full height then collapsed all at once, that end-snap was the
+   "jump".) Exit is quicker than enter, per motion convention. */
+.content[data-state='open'] {
+  animation: accordionOpen var(--duration-state) var(--ease-out-quart);
+}
+.content[data-state='closed'] {
+  animation: accordionClose var(--duration-micro) var(--ease-out-quart);
+}
+
+@keyframes accordionOpen {
+  from { height: 0; }
+  to   { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordionClose {
+  from { height: var(--radix-accordion-content-height); }
+  to   { height: 0; }
+}
+
+.answer {
+  padding: 0 0 var(--space-6);
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body);
+  color: var(--color-text-secondary);
+  max-width: 56ch;
+  text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content[data-state='open'],
+  .content[data-state='closed'] {
+    animation: none;
+  }
+}
