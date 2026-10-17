@@ -17,7 +17,6 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FreeQuoteRouteImport } from './routes/free-quote'
 import { Route as LocationsRouteImport } from './routes/locations'
-import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as QuotesentRouteImport } from './routes/quotesent'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapRouteImport } from './routes/sitemap'
@@ -68,11 +67,6 @@ const FreeQuoteRoute = FreeQuoteRouteImport.update({
 const LocationsRoute = LocationsRouteImport.update({
   id: '/locations',
   path: '/locations',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PricingRoute = PricingRouteImport.update({
-  id: '/pricing',
-  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QuotesentRoute = QuotesentRouteImport.update({
@@ -135,7 +129,6 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/free-quote': typeof FreeQuoteRoute
   '/locations': typeof LocationsRoute
-  '/pricing': typeof PricingRoute
   '/quotesent': typeof QuotesentRoute
   '/services': typeof ServicesRoute
   '/sitemap': typeof SitemapRoute
@@ -156,7 +149,6 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/free-quote': typeof FreeQuoteRoute
   '/locations': typeof LocationsRoute
-  '/pricing': typeof PricingRoute
   '/quotesent': typeof QuotesentRoute
   '/services': typeof ServicesRoute
   '/sitemap': typeof SitemapRoute
@@ -178,7 +170,6 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/free-quote': typeof FreeQuoteRoute
   '/locations': typeof LocationsRoute
-  '/pricing': typeof PricingRoute
   '/quotesent': typeof QuotesentRoute
   '/services': typeof ServicesRoute
   '/sitemap': typeof SitemapRoute
@@ -201,7 +192,6 @@ export interface FileRouteTypes {
     | '/faq'
     | '/free-quote'
     | '/locations'
-    | '/pricing'
     | '/quotesent'
     | '/services'
     | '/sitemap'
@@ -222,7 +212,6 @@ export interface FileRouteTypes {
     | '/faq'
     | '/free-quote'
     | '/locations'
-    | '/pricing'
     | '/quotesent'
     | '/services'
     | '/sitemap'
@@ -243,7 +232,6 @@ export interface FileRouteTypes {
     | '/faq'
     | '/free-quote'
     | '/locations'
-    | '/pricing'
     | '/quotesent'
     | '/services'
     | '/sitemap'
@@ -265,7 +253,6 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   FreeQuoteRoute: typeof FreeQuoteRoute
   LocationsRoute: typeof LocationsRoute
-  PricingRoute: typeof PricingRoute
   QuotesentRoute: typeof QuotesentRoute
   ServicesRoute: typeof ServicesRoute
   SitemapRoute: typeof SitemapRoute
@@ -334,13 +321,6 @@ declare module '@tanstack/react-router' {
       path: '/locations'
       fullPath: '/locations'
       preLoaderRoute: typeof LocationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pricing': {
-      id: '/pricing'
-      path: '/pricing'
-      fullPath: '/pricing'
-      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/quotesent': {
@@ -426,7 +406,6 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   FreeQuoteRoute: FreeQuoteRoute,
   LocationsRoute: LocationsRoute,
-  PricingRoute: PricingRoute,
   QuotesentRoute: QuotesentRoute,
   ServicesRoute: ServicesRoute,
   SitemapRoute: SitemapRoute,

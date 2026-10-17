@@ -78,8 +78,15 @@
 }
 
 .wideImage {
+  position: relative;
   height: 100%;
   min-height: 400px;
+}
+
+/* The photo fills its row instead of setting the row's height. */
+.wideImage img {
+  position: absolute;
+  inset: 0;
 }
 
 .heroImage img,
@@ -394,8 +401,8 @@
 .rowBand {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  /* Fixed 400px per the design's Identity rows; ≤960 resets to auto. */
-  height: 400px;
+  /* At least 400px per the design's Identity rows; taller copy can grow. */
+  min-height: 400px;
   overflow: hidden;
 }
 
@@ -707,6 +714,61 @@
   }
 }
 
+/* Location review: big quote, stats stacked on the right. */
+.reviewSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: var(--space-20);
+  align-items: center;
+}
+
+.reviewQuote {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  font-style: italic;
+  line-height: var(--leading-relaxed);
+  max-width: 62ch;
+}
+
+.reviewMark {
+  margin: 0;
+  color: var(--color-border-strong);
+  font-family: var(--font-heading);
+  font-size: 72px;
+  line-height: .6;
+}
+
+.statsColumn {
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-left: var(--space-10);
+  border-left: 1px solid var(--color-border);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 960px) {
+  .reviewSplit {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .statsColumn {
+    flex-direction: row;
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
 @media (max-width: 960px) {
   .section {
     padding: var(--space-16) var(--space-8);
@@ -767,6 +829,10 @@
 
 @media (max-width: 600px) {
   .section {
+    padding: var(--space-12) var(--space-4);
+  }
+
+  .rowContent {
     padding: var(--space-12) var(--space-4);
   }
 

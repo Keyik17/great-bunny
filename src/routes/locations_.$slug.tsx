@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
-import { Buildings, CheckCircle, House, MapPin, Phone, Siren, Wrench } from '@phosphor-icons/react'
+import { Buildings, CalendarCheck, CheckCircle, House, MapPin, Phone, Pipe, Siren, Wrench } from '@phosphor-icons/react'
 import { JsonLd } from '~/components/shared/JsonLd'
 import { LandingReveal } from '~/components/sections/LandingReveal'
 import { LOCATIONS } from '~/data/locations'
@@ -47,6 +47,11 @@ const cityPages: CityPage[] = [
       'Stapleton',
     ],
     image: '/photos/landing/service-area-denver-skyline.jpg',
+    testimonial: {
+      quote:
+        "My mom's house needed some drains cleaned and of course we called Great Bunny after the wonderful service we had last time. They even gave us a returning customer discount! The sinks were draining slow and water was pooling. After Marco came by they're draining perfectly. Great Bunny is a great business.",
+      author: 'Laura R., Returning Customer, Yelp Review',
+    },
   },
   {
     slug: 'lakewood',
@@ -73,6 +78,11 @@ const cityPages: CityPage[] = [
       'Bear Creek',
     ],
     image: '/photos/locations/area-lakewood.jpg',
+    testimonial: {
+      quote:
+        "My mom's house needed some drains cleaned and of course we called Great Bunny after the wonderful service we had last time. They even gave us a returning customer discount! The sinks were draining slow and water was pooling. After Marco came by they're draining perfectly. Great Bunny is a great business.",
+      author: 'Laura R., Returning Customer, Yelp Review',
+    },
   },
   {
     slug: 'arvada',
@@ -143,6 +153,8 @@ const serviceCards = [
   { number: '02', icon: Wrench, title: 'Sewer Line Cleaning', description: 'Main line clearing with professional-grade drain equipment.' },
   { number: '03', icon: House, title: 'Residential Drains', description: 'Kitchen, bathroom, and floor drain service for local homes.' },
   { number: '04', icon: Buildings, title: 'Commercial Drains', description: 'Reliable commercial drain service for businesses and properties.' },
+  { number: '05', icon: Pipe, title: 'Main Line Snaking', description: 'Deep main line cleaning to restore full flow to your property.' },
+  { number: '06', icon: CalendarCheck, title: 'Scheduled Service', description: 'Regular maintenance to prevent costly emergency situations.' },
 ]
 
 function getCity(slug: string) {
@@ -267,7 +279,7 @@ function LocationDetailPage() {
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.tint}`} aria-labelledby="neighborhoods-title">
+      <section className={styles.section} aria-labelledby="neighborhoods-title">
         <div className={`${styles.container} ${styles.stack}`}>
           <div className={styles.neighborhoodHeading}>
             <h2 id="neighborhoods-title" className={styles.sectionTitle}>
@@ -289,17 +301,17 @@ function LocationDetailPage() {
       </section>
 
       {city.testimonial ? (
-        <section className={styles.section} aria-labelledby="location-review">
-          <LandingReveal className={`${styles.container} ${styles.narrowSplit}`}>
+        <section className={`${styles.section} ${styles.tint}`} aria-labelledby="location-review">
+          <LandingReveal className={`${styles.container} ${styles.reviewSplit}`}>
             <div className={styles.stack}>
-              <p className={styles.script} aria-hidden="true">"</p>
-              <h2 id="location-review" className={styles.h3}>
-                Real Yelp review
+              <p className={styles.reviewMark} aria-hidden="true">&ldquo;</p>
+              <h2 id="location-review" className={styles.srOnly}>
+                Customer review
               </h2>
-              <p className={styles.body}>{city.testimonial.quote}</p>
+              <blockquote className={styles.reviewQuote}>{city.testimonial.quote}</blockquote>
               <p className={styles.muted}>{city.testimonial.author}</p>
             </div>
-            <div className={styles.stats}>
+            <div className={`${styles.stats} ${styles.statsColumn}`}>
               <div className={styles.stat}><span className={styles.statValue}>5.0</span><span className={styles.statLabel}>Yelp Rating</span></div>
               <div className={styles.stat}><span className={styles.statValue}>A</span><span className={styles.statLabel}>BBB Rated</span></div>
               <div className={styles.stat}><span className={styles.statValue}>7 Days</span><span className={styles.statLabel}>Open Weekly</span></div>

@@ -160,7 +160,7 @@
      Type scale stays static (above) per user preference.
      ======================================================== */
   --section-padding-y: clamp(48px, 7vw, 112px);
-  --container-width:   1200px;
+  --container-width:   1280px;
   --container-padding: clamp(16px, 3vw, 40px);
   --nav-height:        clamp(68px, 6.5vw, 88px);
   --nav-height-design: 72px;
