@@ -138,11 +138,6 @@ function Contact() {
                 )
               })}
             </div>
-            <div className={styles.badgeRow}>
-              <span className={styles.badge}>5.0 on Yelp</span>
-              <span className={styles.badge}>BBB 'A' Rated</span>
-              <span className={styles.badge}>Family Owned</span>
-            </div>
           </LandingReveal>
 
           <LandingReveal className={styles.card}>

@@ -487,6 +487,8 @@
   grid-area: help;
   align-items: center;
   text-align: center;
+  /* The menu above already ends in a line; skip the card's own top border. */
+  border-top: 0;
 }
 
 .sidebarMain {
