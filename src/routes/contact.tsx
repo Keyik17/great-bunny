@@ -109,10 +109,6 @@ function Contact() {
             <h1 id="contact-title" className={styles.title}>
               Let's solve your<br />drain problems
             </h1>
-            <p className={styles.body}>
-              Reach out and we'll get back to you fast. Same-day service
-              available across the Denver metro area.
-            </p>
             <div className={styles.smallStack}>
               {infoRows.map((row) => {
                 const Icon = row.icon
