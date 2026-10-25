@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { CurrencyDollar, Gift, ListBullets, Phone, Siren, Wrench } from '@phosphor-icons/react'
 import { LandingFaqAccordion } from '~/components/sections/LandingFaqAccordion'
@@ -110,12 +110,53 @@ export const Route = createFileRoute('/faq')({
   component: Faq,
 })
 
+function sectionId(id: string) {
+  return `faq-${id}`
+}
+
 function Faq() {
+  // Highlights the section you're reading. "all" means you're above the
+  // first section.
   const [active, setActive] = useState('all')
-  const visibleCategories =
-    active === 'all'
-      ? categories
-      : categories.filter((category) => category.id === active)
+
+  useEffect(() => {
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const line = window.innerHeight * 0.35
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2
+      let current = 'all'
+      for (const category of categories) {
+        const el = document.getElementById(sectionId(category.id))
+        if (el && el.getBoundingClientRect().top <= line) current = category.id
+      }
+      if (atBottom && current !== 'all') {
+        current = categories[categories.length - 1].id
+      }
+      setActive(current)
+    }
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      if (frame) cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
+  const jumpTo = (id: string) => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const target = document.getElementById(
+      id === 'all' ? 'faq-list' : sectionId(id),
+    )
+    target?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
+  }
 
   return (
     <main id="main" className={styles.page}>
@@ -132,53 +173,63 @@ function Faq() {
       </section>
 
       <section className={styles.section} aria-label="FAQ categories">
-        <div className={`${styles.container} ${styles.sidebarLayout}`}>
-          <aside className={`${styles.sidebar} ${styles.sidebarTabs}`} aria-label="FAQ navigation">
-            <div className={styles.sideNav}>
-              <button
-                className={`${styles.sideNavItem} ${
-                  active === 'all' ? styles.sideNavItemActive : ''
-                }`}
-                type="button"
-                onClick={() => setActive('all')}
-                aria-pressed={active === 'all'}
-              >
-                <ListBullets size={16} weight="regular" aria-hidden="true" />
-                All questions
-              </button>
-              {categories.map((category) => {
-                const Icon = category.icon
-                const selected = category.id === active
-                return (
-                  <button
-                    className={`${styles.sideNavItem} ${
-                      selected ? styles.sideNavItemActive : ''
-                    }`}
-                    type="button"
-                    key={category.id}
-                    onClick={() => setActive(category.id)}
-                    aria-pressed={selected}
-                  >
-                    <Icon size={16} weight="regular" aria-hidden="true" />
-                    {category.label}
-                  </button>
-                )
-              })}
-            </div>
-          </aside>
+        <div
+          id="faq-list"
+          className={`${styles.container} ${styles.sidebarLayout} ${styles.faqAnchor}`}
+        >
+          {/* Menu and help card share one sticky column so they move together. */}
+          <div className={`${styles.sidebar} ${styles.sidebarColumn}`}>
+            <nav className={styles.sidebarTabs} aria-label="FAQ navigation">
+              <div className={styles.sideNav}>
+                <button
+                  className={`${styles.sideNavItem} ${
+                    active === 'all' ? styles.sideNavItemActive : ''
+                  }`}
+                  type="button"
+                  onClick={() => jumpTo('all')}
+                  aria-current={active === 'all' ? 'true' : undefined}
+                >
+                  <ListBullets size={16} weight="regular" aria-hidden="true" />
+                  All questions
+                </button>
+                {categories.map((category) => {
+                  const Icon = category.icon
+                  const selected = category.id === active
+                  return (
+                    <button
+                      className={`${styles.sideNavItem} ${
+                        selected ? styles.sideNavItemActive : ''
+                      }`}
+                      type="button"
+                      key={category.id}
+                      onClick={() => jumpTo(category.id)}
+                      aria-current={selected ? 'true' : undefined}
+                    >
+                      <Icon size={16} weight="regular" aria-hidden="true" />
+                      {category.label}
+                    </button>
+                  )
+                })}
+              </div>
+            </nav>
 
-          <div className={`${styles.lineCard} ${styles.sidebarHelp}`}>
-            <h2 className={styles.h3}>Need quick help?</h2>
-            <p className={styles.muted}>Call us for immediate help.</p>
-            <a className={styles.buttonOutline} href={TEL_HREF}>
-              <Phone size={16} weight="regular" aria-hidden="true" />
-              {SITE_CONFIG.phone.display}
-            </a>
+            <div className={`${styles.lineCard} ${styles.sidebarHelp}`}>
+              <h2 className={styles.h3}>Need quick help?</h2>
+              <p className={styles.muted}>Call us for immediate help.</p>
+              <a className={styles.buttonOutline} href={TEL_HREF}>
+                <Phone size={16} weight="regular" aria-hidden="true" />
+                {SITE_CONFIG.phone.display}
+              </a>
+            </div>
           </div>
 
           <LandingReveal className={`${styles.accordionGroup} ${styles.sidebarMain}`}>
-            {visibleCategories.map((category) => (
-              <div className={styles.smallStack} key={category.id}>
+            {categories.map((category) => (
+              <div
+                className={`${styles.smallStack} ${styles.faqAnchor}`}
+                id={sectionId(category.id)}
+                key={category.id}
+              >
                 <h2 className={styles.h3}>{category.label}</h2>
                 <LandingFaqAccordion items={category.items} />
               </div>

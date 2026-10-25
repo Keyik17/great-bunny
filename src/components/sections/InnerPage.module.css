@@ -474,6 +474,15 @@
   grid-area: side;
 }
 
+.sidebarColumn {
+  grid-area: side;
+}
+
+/* Sections land below the fixed site nav when jumped to. */
+.faqAnchor {
+  scroll-margin-top: calc(var(--nav-height) + var(--space-8));
+}
+
 .sidebarHelp {
   grid-area: help;
   align-items: center;
@@ -785,6 +794,11 @@
       'side'
       'main'
       'help';
+  }
+
+  /* Phones: unwrap the column so the help card can drop below the questions. */
+  .sidebarColumn {
+    display: contents;
   }
 
   .sidebar {
